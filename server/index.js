@@ -5,6 +5,7 @@ const messageRoutes = require("./Routes/messagesRoute.js");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const app = express();
+const PORT = process.env.PORT || 5000; 
 const socket = require("socket.io");
 app.use(cors());
 dotenv.config();
@@ -18,8 +19,8 @@ app.get("/", (req, res) => {
   res.send("Hello From Server Side");
 });
 
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Server is running at port no. ${process.env.PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`Server is running at port no. ${PORT}`);
 });
 
 const io = socket(server, {
